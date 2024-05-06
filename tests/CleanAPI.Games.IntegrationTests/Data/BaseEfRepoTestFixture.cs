@@ -1,5 +1,5 @@
 ﻿using Ardalis.SharedKernel;
-using CleanAPI.Games.Core.ContributorAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,8 +36,8 @@ public abstract class BaseEfRepoTestFixture
     return builder.Options;
   }
 
-  protected EfRepository<Contributor> GetRepository()
+  protected EfRepository<User> GetRepository()
   {
-    return new EfRepository<Contributor>(_dbContext);
+    return new EfRepository<User>(_dbContext);
   }
 }

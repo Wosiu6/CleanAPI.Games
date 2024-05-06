@@ -8,8 +8,8 @@ public class FakeListGamesQueryService : IListGamesQueryService
   public Task<IEnumerable<GameDTO>> ListAsync()
   {
     List<GameDTO> result =
-        [new GameDTO(1, "Fake Game 1", ""),
-        new GameDTO(2, "Fake Game 2", "")];
+        [new GameDTO(1, "Fake Game 1", "", []),
+        new GameDTO(2, "Fake Game 2", "", [])];
 
     return Task.FromResult(result.AsEnumerable());
   }

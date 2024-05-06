@@ -31,7 +31,7 @@ public class Create(IMediator _mediator)
     CancellationToken cancellationToken)
   {
     var result = await _mediator.Send(new CreateGameCommand(request.Name!,
-      request.SteamUrl), cancellationToken);
+      request.SteamUrl, request.Achievements), cancellationToken);
 
     if (result.IsSuccess)
     {

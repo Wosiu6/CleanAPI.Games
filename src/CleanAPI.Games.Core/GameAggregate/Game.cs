@@ -11,12 +11,12 @@ public class Game(string name, string? steamUrl) : EntityBase, IAggregateRoot
   public string Name { get; private set; } = Guard.Against.NullOrEmpty(name, nameof(name));
   public string? SteamUrl { get; private set; } = Guard.Against.NullOrEmpty(steamUrl, nameof(steamUrl));
   public GameStatus Status { get; private set; } = GameStatus.New;
-  public AchievementsMetaData? AchievementsMetaData { get; private set; }
+  public AchievementsMetaData AchievementsMetaData { get; private set; } = new AchievementsMetaData();
   
 
-  public void SetAchievements(string achievements)
+  public void SetAchievements(List<Achievement> achievements)
   {
-    AchievementsMetaData = JsonConvert.DeserializeObject<AchievementsMetaData>(achievements);
+    AchievementsMetaData.Achievements = achievements;
   }
 
   public void UpdateName(string newName)
@@ -32,10 +32,10 @@ public class Game(string name, string? steamUrl) : EntityBase, IAggregateRoot
 
 public class AchievementsMetaData
 {
-  public List<Achievement>? Achievements { get; private set; }
+  public List<Achievement> Achievements { get; set; } = [];
 }
 
-public class Achievement : ValueObject
+public class Achievement : EntityBase
 {
   public string Name { get; private set; } = string.Empty;
   public string? Description { get; private set; } = string.Empty;
@@ -49,10 +49,8 @@ public class Achievement : ValueObject
     Description = description;
     GlobalPercentage = globalPercentage;
   }
-  protected override IEnumerable<object> GetEqualityComponents()
+  public void SetGlobalPercentage(double globalPercentage)
   {
-    yield return Name;
-    yield return Description ?? string.Empty;
-    yield return GlobalPercentage ?? 0;
+    GlobalPercentage = globalPercentage;
   }
 }

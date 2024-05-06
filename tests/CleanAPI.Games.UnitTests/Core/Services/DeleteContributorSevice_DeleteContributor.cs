@@ -1,5 +1,5 @@
 ﻿using Ardalis.SharedKernel;
-using CleanAPI.Games.Core.ContributorAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.Core.Services;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -8,23 +8,23 @@ using Xunit;
 
 namespace CleanAPI.Games.UnitTests.Core.Services;
 
-public class DeleteContributorService_DeleteContributor
+public class DeleteUserService_DeleteUser
 {
-  private readonly IRepository<Contributor> _repository = Substitute.For<IRepository<Contributor>>();
+  private readonly IRepository<User> _repository = Substitute.For<IRepository<User>>();
   private readonly IMediator _mediator = Substitute.For<IMediator>();
-  private readonly ILogger<DeleteContributorService> _logger = Substitute.For<ILogger<DeleteContributorService>>();
+  private readonly ILogger<DeleteUserService> _logger = Substitute.For<ILogger<DeleteUserService>>();
 
-  private readonly DeleteContributorService _service;
+  private readonly DeleteUserService _service;
 
-  public DeleteContributorService_DeleteContributor()
+  public DeleteUserService_DeleteUser()
   {
-    _service = new DeleteContributorService(_repository, _mediator, _logger);
+    _service = new DeleteUserService(_repository, _mediator, _logger);
   }
 
   [Fact]
-  public async Task ReturnsNotFoundGivenCantFindContributor()
+  public async Task ReturnsNotFoundGivenCantFindUser()
   {
-    var result = await _service.DeleteContributor(0);
+    var result = await _service.DeleteUser(0);
 
     Assert.Equal(Ardalis.Result.ResultStatus.NotFound, result.Status);
   }

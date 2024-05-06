@@ -1,4 +1,4 @@
-﻿using CleanAPI.Games.Core.ContributorAggregate;
+﻿using CleanAPI.Games.Core.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
@@ -12,7 +12,7 @@ public class EfRepositoryUpdate : BaseEfRepoTestFixture
     // add a Contributor
     var repository = GetRepository();
     var initialName = Guid.NewGuid().ToString();
-    var Contributor = new Contributor(initialName);
+    var Contributor = new User(initialName);
 
     await repository.AddAsync(Contributor);
 

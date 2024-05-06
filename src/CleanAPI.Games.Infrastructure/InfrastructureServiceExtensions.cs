@@ -5,7 +5,7 @@ using CleanAPI.Games.Core.Services;
 using CleanAPI.Games.Infrastructure.Data;
 using CleanAPI.Games.Infrastructure.Data.Queries;
 using CleanAPI.Games.Infrastructure.Email;
-using CleanAPI.Games.UseCases.Contributors.List;
+using CleanAPI.Games.UseCases.Users.List;
 using CleanAPI.Games.UseCases.Games.List;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,8 +27,8 @@ public static class InfrastructureServiceExtensions
 
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
     services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
-    services.AddScoped<IListContributorsQueryService, ListContributorsQueryService>();
-    services.AddScoped<IDeleteContributorService, DeleteContributorService>();
+    services.AddScoped<IListUsersQueryService, ListUserQueryService>();
+    services.AddScoped<IDeleteUserService, DeleteUserService>();
     services.AddScoped<IListGamesQueryService, ListGamesQueryService>();
     services.AddScoped<IDeleteGameService, DeleteGameService>();
 

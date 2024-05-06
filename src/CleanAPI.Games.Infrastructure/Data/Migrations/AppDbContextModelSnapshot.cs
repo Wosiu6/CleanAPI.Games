@@ -16,7 +16,7 @@ namespace CleanAPI.Games.Infrastructure.Data.Migrations
 #pragma warning disable 612, 618
       modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
 
-      modelBuilder.Entity("CleanAPI.Games.Core.ContributorAggregate.Contributor", b =>
+      modelBuilder.Entity("CleanAPI.Games.Core.UserAggregate.User", b =>
           {
             b.Property<int>("Id")
                       .ValueGeneratedOnAdd()
@@ -32,7 +32,7 @@ namespace CleanAPI.Games.Infrastructure.Data.Migrations
 
             b.HasKey("Id");
 
-            b.ToTable("Contributors");
+            b.ToTable("Users");
           });
 
       modelBuilder.Entity("CleanAPI.Games.Core.GameAggregate.Game", b =>
@@ -54,34 +54,34 @@ namespace CleanAPI.Games.Infrastructure.Data.Migrations
                   b.ToTable("Games");
                 });
 
-      modelBuilder.Entity("CleanAPI.Games.Core.ContributorAggregate.Contributor", b =>
-          {
-            b.OwnsOne("CleanAPI.Games.Core.ContributorAggregate.PhoneNumber", "PhoneNumber", b1 =>
-                      {
-                        b1.Property<int>("ContributorId")
-                                  .HasColumnType("INTEGER");
+      //modelBuilder.Entity("CleanAPI.Games.Core.UserAggregate.User", b =>
+      //    {
+      //      b.OwnsOne("CleanAPI.Games.Core.UserAggregate.PhoneNumber", "PhoneNumber", b1 =>
+      //                {
+      //                  b1.Property<int>("UserId")
+      //                            .HasColumnType("INTEGER");
 
-                        b1.Property<string>("CountryCode")
-                                  .IsRequired()
-                                  .HasColumnType("TEXT");
+      //                  b1.Property<string>("CountryCode")
+      //                            .IsRequired()
+      //                            .HasColumnType("TEXT");
 
-                        b1.Property<string>("Extension")
-                                  .HasColumnType("TEXT");
+      //                  b1.Property<string>("Extension")
+      //                            .HasColumnType("TEXT");
 
-                        b1.Property<string>("Number")
-                                  .IsRequired()
-                                  .HasColumnType("TEXT");
+      //                  b1.Property<string>("Number")
+      //                            .IsRequired()
+      //                            .HasColumnType("TEXT");
 
-                        b1.HasKey("ContributorId");
+      //                  b1.HasKey("UserId");
 
-                        b1.ToTable("Contributors");
+      //                  b1.ToTable("Users");
 
-                        b1.WithOwner()
-                                  .HasForeignKey("ContributorId");
-                      });
+      //                  b1.WithOwner()
+      //                            .HasForeignKey("UserId");
+      //                });
 
-            b.Navigation("PhoneNumber");
-          });
+      //      b.Navigation("PhoneNumber");
+      //    });
 
 
 #pragma warning restore 612, 618

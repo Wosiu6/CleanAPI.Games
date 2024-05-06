@@ -1,5 +1,5 @@
 ﻿using Ardalis.SmartEnum;
-using CleanAPI.Games.Core.ContributorAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 
 namespace CleanAPI.Games.Core.GameAggregate;
 

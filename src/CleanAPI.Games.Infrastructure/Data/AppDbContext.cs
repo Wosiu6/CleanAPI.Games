@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using Ardalis.SharedKernel;
-using CleanAPI.Games.Core.ContributorAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.Core.GameAggregate;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +16,7 @@ public class AppDbContext : DbContext
     _dispatcher = dispatcher;
   }
 
-  public DbSet<Contributor> Contributors => Set<Contributor>();
+  public DbSet<User> Users => Set<User>();
   public DbSet<Game> Games => Set<Game>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)

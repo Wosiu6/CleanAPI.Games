@@ -1,4 +1,4 @@
-﻿using CleanAPI.Games.Core.ContributorAggregate;
+﻿using CleanAPI.Games.Core.UserAggregate;
 using Xunit;
 
 namespace CleanAPI.Games.UnitTests.Core.ContributorAggregate;
@@ -6,11 +6,11 @@ namespace CleanAPI.Games.UnitTests.Core.ContributorAggregate;
 public class ContributorConstructor
 {
   private readonly string _testName = "test name";
-  private Contributor? _testContributor;
+  private User? _testContributor;
 
-  private Contributor CreateContributor()
+  private User CreateContributor()
   {
-    return new Contributor(_testName);
+    return new User(_testName);
   }
 
   [Fact]

@@ -1,4 +1,4 @@
-﻿using CleanAPI.Games.Core.ContributorAggregate;
+﻿using CleanAPI.Games.Core.UserAggregate;
 using Xunit;
 
 namespace CleanAPI.Games.IntegrationTests.Data;
@@ -11,7 +11,7 @@ public class EfRepositoryDelete : BaseEfRepoTestFixture
     // add a Contributor
     var repository = GetRepository();
     var initialName = Guid.NewGuid().ToString();
-    var Contributor = new Contributor(initialName);
+    var Contributor = new User(initialName);
     await repository.AddAsync(Contributor);
 
     // delete the item

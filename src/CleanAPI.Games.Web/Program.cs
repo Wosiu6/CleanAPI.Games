@@ -1,13 +1,13 @@
 ﻿using System.Reflection;
 using Ardalis.ListStartupServices;
 using Ardalis.SharedKernel;
-using CleanAPI.Games.Core.ContributorAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.Core.GameAggregate;
 using CleanAPI.Games.Core.Interfaces;
 using CleanAPI.Games.Infrastructure;
 using CleanAPI.Games.Infrastructure.Data;
 using CleanAPI.Games.Infrastructure.Email;
-using CleanAPI.Games.UseCases.Contributors.Create;
+using CleanAPI.Games.UseCases.Users.Create;
 using CleanAPI.Games.UseCases.Games.Create;
 using FastEndpoints;
 using FastEndpoints.Swagger;
@@ -106,11 +106,11 @@ void ConfigureMediatR()
   var mediatRAssemblies = new[]
 {
   // Core
-  Assembly.GetAssembly(typeof(Contributor)),
+  Assembly.GetAssembly(typeof(User)),
   Assembly.GetAssembly(typeof(Game)),
 
   // UseCases
-  Assembly.GetAssembly(typeof(CreateContributorCommand)),
+  Assembly.GetAssembly(typeof(CreateUserCommand)),
   Assembly.GetAssembly(typeof(CreateGameCommand))
 
 };

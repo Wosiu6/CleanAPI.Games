@@ -15,7 +15,7 @@ public class DeleteGameHandler(IDeleteGameService _deleteGameService)
 
     // Another Approach: Do the real work here including dispatching domain events - change the event from internal to public
     // @ardalis prefers using the service above so that **domain** event behavior remains in the **domain model** (core project)
-    // var aggregateToDelete = await _repository.GetByIdAsync(request.ContributorId);
+    // var aggregateToDelete = await _repository.GetByIdAsync(request.GameId);
     // if (aggregateToDelete == null) return Result.NotFound();
 
     // await _repository.DeleteAsync(aggregateToDelete);

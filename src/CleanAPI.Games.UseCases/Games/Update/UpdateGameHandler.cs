@@ -9,17 +9,17 @@ public class UpdateGameHandler(IRepository<Game> _repository)
 {
   public async Task<Result<GameDTO>> Handle(UpdateGameCommand request, CancellationToken cancellationToken)
   {
-    var existingContributor = await _repository.GetByIdAsync(request.ContributorId, cancellationToken);
-    if (existingContributor == null)
+    var existingGame = await _repository.GetByIdAsync(request.GameId, cancellationToken);
+    if (existingGame == null)
     {
       return Result.NotFound();
     }
 
-    existingContributor.UpdateName(request.NewName!);
+    existingGame.UpdateName(request.NewName!);
 
-    await _repository.UpdateAsync(existingContributor, cancellationToken);
+    await _repository.UpdateAsync(existingGame, cancellationToken);
 
-    return Result.Success(new GameDTO(existingContributor.Id,
-      existingContributor.Name, existingContributor.SteamUrl ?? ""));
+    return Result.Success(new GameDTO(existingGame.Id,
+      existingGame.Name, existingGame.SteamUrl ?? "", existingGame.AchievementsMetaData.Achievements.AsDtos()));
   }
 }

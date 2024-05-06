@@ -10,4 +10,5 @@ public class CreateGameRequest
   [Required]
   public string? Name { get; set; }
   public string? SteamUrl { get; set; }
+  public List<Achievement>? Achievements { get; set; }
 }

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace CleanAPI.Games.Core.GameAggregate.Handlers;
 
 /// <summary>
-/// NOTE: Internal because ContributorDeleted is also marked as internal.
+/// NOTE: Internal because GameDeleted is also marked as internal.
 /// </summary>
 internal class GameDeletedHandler(ILogger<GameDeletedHandler> logger,
   IEmailSender emailSender) : INotificationHandler<GameDeletedEvent>
