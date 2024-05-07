@@ -20,6 +20,6 @@ public class UpdateGameHandler(IRepository<Game> _repository)
     await _repository.UpdateAsync(existingGame, cancellationToken);
 
     return Result.Success(new GameDTO(existingGame.Id,
-      existingGame.Name, existingGame.SteamUrl ?? "", existingGame.AchievementsMetaData.Achievements.AsDtos()));
+      existingGame.Name, existingGame.SteamUrl ?? ""));
   }
 }

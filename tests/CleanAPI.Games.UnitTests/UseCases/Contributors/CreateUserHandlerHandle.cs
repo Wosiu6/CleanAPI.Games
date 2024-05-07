@@ -1,4 +1,5 @@
 ﻿using Ardalis.SharedKernel;
+using CleanAPI.Games.Core.GameAggregate;
 using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.UseCases.Users.Create;
 using FluentAssertions;
@@ -28,7 +29,7 @@ public class CreateUserHandlerHandle
   {
     _repository.AddAsync(Arg.Any<User>(), Arg.Any<CancellationToken>())
       .Returns(Task.FromResult(CreateUser()));
-    var result = await _handler.Handle(new CreateUserCommand(_testName, null), CancellationToken.None);
+    var result = await _handler.Handle(new CreateUserCommand(_testName), CancellationToken.None);
 
     result.IsSuccess.Should().BeTrue();
   }

@@ -11,10 +11,6 @@ public class CreateGameHandler(IRepository<Game> _repository)
     CancellationToken cancellationToken)
   {
     var newGame = new Game(request.Name, request.SteamUrl);
-    if (request.Achievements is not null)
-    {
-      newGame.SetAchievements(request.Achievements);
-    }
     var createdItem = await _repository.AddAsync(newGame, cancellationToken);
 
     return createdItem.Id;

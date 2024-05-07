@@ -19,4 +19,8 @@
     <ProjectReference Include="..\CleanAPI.Games.Core\CleanAPI.Games.Core.csproj" />
     <ProjectReference Include="..\CleanAPI.Games.UseCases\CleanAPI.Games.UseCases.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
 </Project>

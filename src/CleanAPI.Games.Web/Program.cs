@@ -14,6 +14,8 @@ using FastEndpoints.Swagger;
 using MediatR;
 using Serilog;
 using Serilog.Extensions.Logging;
+using CleanAPI.Games.Core.AchievementAggregate;
+using CleanAPI.Games.UseCases.Achievements.Create;
 
 var logger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
@@ -108,9 +110,11 @@ void ConfigureMediatR()
   // Core
   Assembly.GetAssembly(typeof(User)),
   Assembly.GetAssembly(typeof(Game)),
+  Assembly.GetAssembly(typeof(Achievement)),
 
   // UseCases
   Assembly.GetAssembly(typeof(CreateUserCommand)),
+  Assembly.GetAssembly(typeof(CreateAchievementCommand)),
   Assembly.GetAssembly(typeof(CreateGameCommand))
 
 };

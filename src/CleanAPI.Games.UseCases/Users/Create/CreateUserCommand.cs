@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 
 namespace CleanAPI.Games.UseCases.Users.Create;
 
@@ -7,4 +8,4 @@ namespace CleanAPI.Games.UseCases.Users.Create;
 /// Create a new User.
 /// </summary>
 /// <param name="Name"></param>
-public record CreateUserCommand(string Name, List<Game>? Games) : Ardalis.SharedKernel.ICommand<Result<int>>;
+public record CreateUserCommand(string Name) : Ardalis.SharedKernel.ICommand<Result<int>>;

@@ -12,8 +12,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .HasMaxLength(DataSchemaConstants.DEFAULT_NAME_LENGTH)
         .IsRequired();
 
-    builder.OwnsOne(builder => builder.Games);
-
     builder.Property(x => x.Status)
       .HasConversion(
           x => x.Value,

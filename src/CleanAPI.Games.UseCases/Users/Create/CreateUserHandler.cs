@@ -11,10 +11,6 @@ public class CreateUserHandler(IRepository<User> _repository)
     CancellationToken cancellationToken)
   {
     var newUser = new User(request.Name);
-    if (request.Games?.Count > 0)
-    {
-      newUser.SetGames(request.Games);
-    }
     var createdItem = await _repository.AddAsync(newUser, cancellationToken);
 
     return createdItem.Id;

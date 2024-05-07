@@ -21,6 +21,6 @@ public class UpdateUserHandler(IRepository<User> _repository)
     await _repository.UpdateAsync(existingUser, cancellationToken);
 
     return Result.Success(new UserDTO(existingUser.Id,
-      existingUser.Name, existingUser.Games.AsDtos() ?? new List<GameDTO>()));
+      existingUser.Name, existingUser.Games.Select(GameDTO.FromToDoItem).ToList()));
   }
 }

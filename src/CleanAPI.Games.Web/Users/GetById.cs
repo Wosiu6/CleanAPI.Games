@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.UseCases.Games;
 using CleanAPI.Games.UseCases.Users.Get;
 using FastEndpoints;
@@ -40,11 +41,10 @@ public class GetById(IMediator _mediator)
       List<Game> games = result.Value.Games.Select(gameDto =>
       {
         var result = new Game(gameDto.Name, gameDto.SteamUrl);
-        result.SetAchievements(gameDto.Achievements.AsEntities());
         return result;
       }).ToList();
 
-      Response = new UserRecord(result.Value.Id, result.Value.Name, games);
+      Response = new UserRecord(result.Value.Id, result.Value.Name);
     }
   }
 }

@@ -1,4 +1,5 @@
-﻿using CleanAPI.Games.UseCases.Users.Create;
+﻿using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.UseCases.Users.Create;
 using FastEndpoints;
 using MediatR;
 
@@ -22,7 +23,13 @@ public class Create(IMediator _mediator)
       // XML Docs are used by default but are overridden by these properties:
       //s.Summary = "Create a new User.";
       //s.Description = "Create a new User. A valid name is required.";
-      s.ExampleRequest = new CreateUserRequest { Name = "User Name" };
+      s.ExampleRequest = new CreateUserRequest
+      {
+        Name = "User Name",
+        Games = [
+          new Game("Game Name 1", "url")
+        ]
+      };
     });
   }
 
@@ -30,8 +37,7 @@ public class Create(IMediator _mediator)
     CreateUserRequest request,
     CancellationToken cancellationToken)
   {
-    var result = await _mediator.Send(new CreateUserCommand(request.Name!,
-      request.Games), cancellationToken);
+    var result = await _mediator.Send(new CreateUserCommand(request.Name!), cancellationToken);
 
     if (result.IsSuccess)
     {

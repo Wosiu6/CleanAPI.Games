@@ -18,8 +18,8 @@ public class GetUserHandler(IReadRepository<User> _repository)
     var entity = await _repository.FirstOrDefaultAsync(spec, cancellationToken);
     if (entity == null) return Result.NotFound();
 
-    var gamesDto = entity.Games.AsDtos();
+    var ga = entity.Games;
 
-    return new UserDTO(entity.Id, entity.Name, gamesDto ?? new List<GameDTO>());
+    return new UserDTO(entity.Id, entity.Name, entity.Games.Select(GameDTO.FromToDoItem).ToList());
   }
 }

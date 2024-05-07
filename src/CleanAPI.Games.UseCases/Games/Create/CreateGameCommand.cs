@@ -7,4 +7,4 @@ namespace CleanAPI.Games.UseCases.Games.Create;
 /// Create a new Game.
 /// </summary>
 /// <param name="Name"></param>
-public record CreateGameCommand(string Name, string? SteamUrl, List<Achievement>? Achievements) : Ardalis.SharedKernel.ICommand<Result<int>>;
+public record CreateGameCommand(string Name, string? SteamUrl) : Ardalis.SharedKernel.ICommand<Result<int>>;

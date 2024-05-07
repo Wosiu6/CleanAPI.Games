@@ -1,4 +1,5 @@
-﻿using CleanAPI.Games.UseCases.Games.Create;
+﻿using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.UseCases.Games.Create;
 using FastEndpoints;
 using MediatR;
 
@@ -22,7 +23,7 @@ public class Create(IMediator _mediator)
       // XML Docs are used by default but are overridden by these properties:
       //s.Summary = "Create a new Game.";
       //s.Description = "Create a new Game. A valid name is required.";
-      s.ExampleRequest = new CreateGameRequest { Name = "Game Name", SteamUrl="www.example.com" };
+      s.ExampleRequest = new CreateGameRequest { Name = "Game Name", SteamUrl = "www.example.com" };
     });
   }
 
@@ -31,7 +32,7 @@ public class Create(IMediator _mediator)
     CancellationToken cancellationToken)
   {
     var result = await _mediator.Send(new CreateGameCommand(request.Name!,
-      request.SteamUrl, request.Achievements), cancellationToken);
+      request.SteamUrl), cancellationToken);
 
     if (result.IsSuccess)
     {

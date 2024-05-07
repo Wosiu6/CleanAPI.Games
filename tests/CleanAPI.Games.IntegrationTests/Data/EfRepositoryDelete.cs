@@ -1,4 +1,5 @@
-﻿using CleanAPI.Games.Core.UserAggregate;
+﻿using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using Xunit;
 
 namespace CleanAPI.Games.IntegrationTests.Data;

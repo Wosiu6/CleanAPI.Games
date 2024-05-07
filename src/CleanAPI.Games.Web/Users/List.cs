@@ -1,4 +1,5 @@
 ﻿using Ardalis.Result;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.UseCases.Games;
 using CleanAPI.Games.UseCases.Users;
 using CleanAPI.Games.UseCases.Users.List;
@@ -29,7 +30,7 @@ public class List(IMediator _mediator) : EndpointWithoutRequest<UserListResponse
     {
       Response = new UserListResponse
       {
-        Users = result.Value.Select(c => new UserRecord(c.Id, c.Name, c.Games.AsEntities())).ToList()
+        Users = result.Value.Select(c => new UserRecord(c.Id, c.Name)).ToList()
       };
     }
   }

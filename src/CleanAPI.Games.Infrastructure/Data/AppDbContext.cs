@@ -3,12 +3,12 @@ using Ardalis.SharedKernel;
 using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.Core.GameAggregate;
 using Microsoft.EntityFrameworkCore;
+using CleanAPI.Games.Core.AchievementAggregate;
 
 namespace CleanAPI.Games.Infrastructure.Data;
 public class AppDbContext : DbContext
 {
   private readonly IDomainEventDispatcher? _dispatcher;
-
   public AppDbContext(DbContextOptions<AppDbContext> options,
     IDomainEventDispatcher? dispatcher)
       : base(options)
@@ -18,6 +18,7 @@ public class AppDbContext : DbContext
 
   public DbSet<User> Users => Set<User>();
   public DbSet<Game> Games => Set<Game>();
+  public DbSet<Achievement> Achievements => Set<Achievement>();
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {

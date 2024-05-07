@@ -1,4 +1,6 @@
 ﻿using Ardalis.Result;
+using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.UseCases.Games;
 using CleanAPI.Games.UseCases.Games.Get;
 using CleanAPI.Games.UseCases.Games.Update;
 using FastEndpoints;

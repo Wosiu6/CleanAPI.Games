@@ -1,4 +1,5 @@
-﻿using CleanAPI.Games.Core.UserAggregate;
+﻿using CleanAPI.Games.Core.GameAggregate;
+using CleanAPI.Games.Core.UserAggregate;
 using Xunit;
 
 namespace CleanAPI.Games.IntegrationTests.Data;
@@ -6,7 +7,7 @@ namespace CleanAPI.Games.IntegrationTests.Data;
 public class EfRepositoryAdd : BaseEfRepoTestFixture
 {
   [Fact]
-  public async Task AddsContributorAndSetsId()
+  public async Task AddsUserAndSetsId()
   {
     var testContributorName = "testContributor";
     var testContributorStatus = UserStatus.Elite;

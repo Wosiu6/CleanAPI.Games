@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using CleanAPI.Games.UseCases.Achievements.List;
 
 namespace CleanAPI.Games.Infrastructure;
 public static class InfrastructureServiceExtensions
@@ -20,17 +21,22 @@ public static class InfrastructureServiceExtensions
     ConfigurationManager config,
     ILogger logger)
   {
-    string? connectionString = config.GetConnectionString("DefaultConnection");
+    string? connectionString = config.GetConnectionString("SqliteConnection");
     Guard.Against.Null(connectionString);
     services.AddDbContext<AppDbContext>(options =>
-     options.UseSqlServer(connectionString));
+     options.UseSqlite(connectionString));
 
     services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
     services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
+
     services.AddScoped<IListUsersQueryService, ListUserQueryService>();
     services.AddScoped<IDeleteUserService, DeleteUserService>();
+
     services.AddScoped<IListGamesQueryService, ListGamesQueryService>();
     services.AddScoped<IDeleteGameService, DeleteGameService>();
+
+    services.AddScoped<IListAchievementsQueryService, ListAchievementsQueryService>();
+    services.AddScoped<IDeleteAchievementService, DeleteAchievementService>();
 
     services.Configure<MailserverConfiguration>(config.GetSection("Mailserver"));
 

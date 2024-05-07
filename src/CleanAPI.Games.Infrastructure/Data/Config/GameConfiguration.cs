@@ -12,12 +12,6 @@ public class GameConfiguration : IEntityTypeConfiguration<Game>
         .HasMaxLength(DataSchemaConstants.DEFAULT_NAME_LENGTH)
         .IsRequired();
 
-    builder.OwnsOne(builder => builder.AchievementsMetaData, ownedNavigationBuilder =>
-    {
-      ownedNavigationBuilder.ToJson();
-      ownedNavigationBuilder.OwnsMany(metaData => metaData.Achievements);
-    });
-
     builder.Property(x => x.Status)
       .HasConversion(
           x => x.Value,

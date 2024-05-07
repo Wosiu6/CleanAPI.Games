@@ -1,4 +1,5 @@
 ﻿using Ardalis.Result;
+using CleanAPI.Games.Core.UserAggregate;
 using CleanAPI.Games.UseCases.Games;
 using CleanAPI.Games.UseCases.Users.Get;
 using CleanAPI.Games.UseCases.Users.Update;
@@ -48,7 +49,7 @@ public class Update(IMediator _mediator)
     if (queryResult.IsSuccess)
     {
       var dto = queryResult.Value;
-      Response = new UpdateUserResponse(new UserRecord(dto.Id, dto.Name, dto.Games.AsEntities()));
+      Response = new UpdateUserResponse(new UserRecord(dto.Id, dto.Name));
       return;
     }
   }
